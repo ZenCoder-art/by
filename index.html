@@ -6,37 +6,64 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport"
     content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-  <meta name="description" content="">
+  <meta name="description" content="保研经验分享">
+  <meta name="keywords" content="保研，夏令营，预推免">
+  <link rel="icon" href="public/logo.png">
   <title>保研之路</title>
 
   <link rel="stylesheet" media="(prefers-color-scheme: dark)"
     href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
   <link rel="stylesheet" media="(prefers-color-scheme: light)"
     href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
-
   <style>
     :root {
       --theme-hue: 325;
-      font-size: 18px;
+      --base-font-size: 18px;
+    }
+
+    .loader {
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 30px;
+      display: inline-flex;
+    }
+
+    .loader::before {
+      content: "Loadi";
+      animation: l27 2s infinite;
+    }
+
+    .loader::after {
+      content: "ng...";
+      animation: l27 2s infinite 1s;
+    }
+
+    @keyframes l27 {
+
+      50%,
+      100% {
+        transform: rotate(1turn)
+      }
     }
   </style>
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <div class="loader"></div>
+  </div>
 
   <script>
     window.$docsify = {
       name: "保研指南",
       repo: 'https://github.com/ZenCoder-art/by',
-      coverpage: true,
+      coverpage: "layout/_coverpage.md",
       onlyCover: true,
-      loadSidebar: true,
+      loadSidebar: "layout/_sidebar.md",
       MaxLevel: 6,
       subMaxLevel: 3,
       sidebarDisplayLevel: 1,
       auto2top: true,
-      onlyCover: true,
       mergeNavbar: true,
       executeScript: true,
       externalLinkTarget: '_blank',
@@ -48,7 +75,11 @@
         placeholder: "Type to search",
         noData: "No Results!",
         depth: 4,
+      },
+      mermaidConfig: {
+        querySelector: ".mermaid"
       }
+
     };
   </script>
 
@@ -57,6 +88,13 @@
   <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+    window.mermaid = mermaid;
+  </script>
+  <script src="//unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
 </body>
 
 </html>
